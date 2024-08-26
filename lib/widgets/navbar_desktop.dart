@@ -10,8 +10,7 @@ class NavBar extends StatefulWidget implements PreferredSizeWidget {
   State<NavBar> createState() => _NavBarState();
 
   @override
-  Size get preferredSize =>
-      const Size.fromHeight(100); // AppBar yüksekliğini burada ayarlayın
+  Size get preferredSize => const Size.fromHeight(100);
 }
 
 class _NavBarState extends State<NavBar> {

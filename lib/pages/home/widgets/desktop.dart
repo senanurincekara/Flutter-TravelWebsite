@@ -25,13 +25,11 @@ class _DesktopScreenState extends State<DesktopScreen>
   void initState() {
     super.initState();
 
-    // Animation controller setup
     _controller = AnimationController(
-      duration: const Duration(seconds: 3), // Duration of animation
+      duration: const Duration(seconds: 3),
       vsync: this,
-    )..repeat(reverse: true); // Repeat the animation
+    )..repeat(reverse: true);
 
-    // Creating animation with Tween
     _animation = Tween<double>(begin: -10.0, end: 10.0).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
@@ -39,7 +37,7 @@ class _DesktopScreenState extends State<DesktopScreen>
 
   @override
   void dispose() {
-    _controller.dispose(); // Dispose of the controller
+    _controller.dispose();
     super.dispose();
   }
 

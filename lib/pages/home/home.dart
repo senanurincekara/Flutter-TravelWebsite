@@ -17,14 +17,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       extendBodyBehindAppBar: true,
-      // Container kullanarak özel bir başlık çubuğu ekliyoruz
       body: Column(
         children: [
           Container(
             width: double.infinity,
-
             decoration: BoxDecoration(
-              color: Colors.white, // Arka plan rengini ihtiyaca göre ayarlayın
+              color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -36,16 +34,15 @@ class HomePage extends StatelessWidget {
             ),
             child: ResponsiveWidget.isSmallScreen(context)
                 ? mobileNavBar(scaffoldKey)
-                : NavBar(), // büyük ekranlar için NavBar kullanımı
+                : NavBar(),
           ),
           Expanded(
-            child: // Sayfanın geri kalan içeriği buraya gelecek
-                Container(
-                    child: ResponsiveWidget(
+            child: Container(
+                child: ResponsiveWidget(
               largeScreen: DesktopScreen(),
               smallScreen: MobileScreen(),
               mediumScreen: DesktopScreen(),
-            )), // İçerik yerleşimi için boş bir container
+            )),
           ),
         ],
       ),

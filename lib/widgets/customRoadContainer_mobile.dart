@@ -13,12 +13,11 @@ class CustomRoadContainerMobile extends StatefulWidget {
 class _CustomRoadContainerMobileState extends State<CustomRoadContainerMobile> {
   @override
   Widget build(BuildContext context) {
-    // Fetching screen size dynamically
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white, // Background color
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -54,9 +53,9 @@ class _CustomRoadContainerMobileState extends State<CustomRoadContainerMobile> {
             margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.white, // Background color
+              color: Colors.white,
               border: Border.all(width: 2, color: active),
-              borderRadius: BorderRadius.circular(10), // Rounded edges
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
               child: Text(
@@ -83,7 +82,7 @@ class _CustomRoadContainerMobileState extends State<CustomRoadContainerMobile> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            splashColor: Colors.grey, // Splash color
+            splashColor: Colors.grey,
             onTap: () => print("Container pressed"),
             child: Container(
               padding: EdgeInsets.all(screenSize.width * 0.025),
@@ -115,7 +114,7 @@ class _CustomRoadContainerMobileState extends State<CustomRoadContainerMobile> {
             ),
           ),
           InkWell(
-            splashColor: Colors.grey, // Splash color
+            splashColor: Colors.grey,
             onTap: () => print("Container pressed"),
             child: Container(
               padding: EdgeInsets.all(screenSize.width * 0.025),

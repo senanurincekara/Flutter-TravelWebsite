@@ -12,7 +12,6 @@ class CustomAdvContainerMobile extends StatefulWidget {
 }
 
 class _CustomAdvContainerMobileState extends State<CustomAdvContainerMobile> {
-  // Store the hover state for each container
   bool _isHovering1 = false;
   bool _isHovering2 = false;
   bool _isHovering3 = false;
@@ -20,8 +19,7 @@ class _CustomAdvContainerMobileState extends State<CustomAdvContainerMobile> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize =
-        MediaQuery.of(context).size.width; // Use MediaQuery to get screen size
+    var screenSize = MediaQuery.of(context).size.width;
 
     return Container(
       width: screenSize,
@@ -77,12 +75,8 @@ class _CustomAdvContainerMobileState extends State<CustomAdvContainerMobile> {
         curve: Curves.easeInOut,
         // margin: EdgeInsets.all(5), // Margin for spacing
         // padding: EdgeInsets.all(8),
-        width: isHovering
-            ? screenSize / 4
-            : screenSize / 4.5, // Adjust size for mobile
-        height: isHovering
-            ? screenSize / 4
-            : screenSize / 4.5, // Adjust size for mobile
+        width: isHovering ? screenSize / 4 : screenSize / 4.5,
+        height: isHovering ? screenSize / 4 : screenSize / 4.5,
         decoration: BoxDecoration(
           color: isHovering ? Colors.red : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
@@ -92,7 +86,7 @@ class _CustomAdvContainerMobileState extends State<CustomAdvContainerMobile> {
                     color: Colors.black.withOpacity(0.2),
                     spreadRadius: 2,
                     blurRadius: 8,
-                    offset: Offset(0, 2), // changes position of shadow
+                    offset: Offset(0, 2),
                   ),
                 ]
               : [],
@@ -110,8 +104,7 @@ class _CustomAdvContainerMobileState extends State<CustomAdvContainerMobile> {
             Text(
               title,
               style: GoogleFonts.roboto(
-                fontSize:
-                    screenSize * 0.03, // Adjust font size based on screen size
+                fontSize: screenSize * 0.03,
                 fontWeight: FontWeight.bold,
                 color: isHovering ? Colors.white : Colors.black,
               ),

@@ -13,19 +13,21 @@ class PopularDestinationsDesktop extends StatefulWidget {
 class _PopularDestinationsDesktopState
     extends State<PopularDestinationsDesktop> {
   final List<String> _imagePaths = [
+    'assets/images/9.png',
+    'assets/images/10.png',
+    'assets/images/11.png',
+    'assets/images/12.png',
+    'assets/images/7.png',
     'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
-    'assets/images/6.png',
+    'assets/images/11.png',
+    'assets/images/12.png',
+    'assets/images/9.png',
+    'assets/images/10.png',
   ];
 
   int _currentPage = 0;
+
+  final List<bool> _isHoveredList = List.generate(10, (_) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,6 @@ class _PopularDestinationsDesktopState
     final isSmallScreen = screenWidth < 600;
     final textSize = isSmallScreen ? 22.0 : 28.0;
 
-    // Calculate the start and end index for the current page
     int startIndex = _currentPage * 4;
     int endIndex = startIndex + 4;
     List<String> currentImages = _imagePaths.sublist(
@@ -42,11 +43,11 @@ class _PopularDestinationsDesktopState
     );
 
     return Container(
-      color: Colors.amber,
+      // color: Colors.amber,
       height: screenWidth * 0.3,
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,7 +69,7 @@ class _PopularDestinationsDesktopState
                               _currentPage--;
                             });
                           }
-                        : null, // Disable button if on the first page
+                        : null,
                   ),
                   IconButton(
                     icon: const Icon(Icons.arrow_circle_right),
@@ -78,39 +79,70 @@ class _PopularDestinationsDesktopState
                               _currentPage++;
                             });
                           }
-                        : null, // Disable button if on the last page
+                        : null,
                   ),
                 ],
               ),
             ],
           ),
           const SizedBox(height: 16.0),
-          // Constrain GridView with a SizedBox
-          SizedBox(
-            height:
-                screenWidth * 0.3, // or any other formula that fits your design
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 16.0,
-              crossAxisSpacing: 16.0,
-              children: currentImages.map((imagePath) {
-                return Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(imagePath),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 5,
-                        offset: const Offset(2, 2),
+          Expanded(
+            child: Container(
+              // color: Colors.black,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(currentImages.length, (index) {
+                  return MouseRegion(
+                    onEnter: (_) => setState(
+                        () => _isHoveredList[startIndex + index] = true),
+                    onExit: (_) => setState(
+                        () => _isHoveredList[startIndex + index] = false),
+                    child: AnimatedContainer(
+                      width: screenWidth * 0.22,
+                      margin: EdgeInsets.all(screenWidth * 0.0022),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(currentImages[index]),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 5,
+                            offset: const Offset(2, 2),
+                          ),
+                        ],
+                        border: _isHoveredList[startIndex + index]
+                            ? Border.all(width: 3, color: Colors.red)
+                            : null,
                       ),
-                    ],
-                  ),
-                );
-              }).toList(),
+                      duration: const Duration(milliseconds: 200),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            width: screenWidth * 0.18,
+                            height: screenWidth * 0.05,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "Description",
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
             ),
           ),
         ],

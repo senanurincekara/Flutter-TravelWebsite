@@ -16,17 +16,17 @@ class ServicesContainerDesktop extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(16.0), // Added padding for better spacing
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     servicesTitle,
                     style: TextStyle(
-                      fontSize: screenWidth < 600 ? 24 : 30, // Adjust font size
+                      fontSize: screenWidth < 600 ? 24 : 30,
                       fontWeight: FontWeight.bold,
                     ),
-                    textAlign: TextAlign.start, // Align text to the start
+                    textAlign: TextAlign.start,
                   ),
                   SizedBox(height: 10),
                   ...services.map((service) {
@@ -59,7 +59,7 @@ class ServicesContainerDesktop extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 16), // Added spacing between columns
+                  SizedBox(width: 16),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -143,8 +143,7 @@ class _HoverableServiceItemState extends State<HoverableServiceItem> {
               widget.service['description'] ?? '',
               style: TextStyle(
                 color: Colors.black87,
-                fontSize:
-                    widget.screenWidth < 600 ? 14 : 16, // Adjust font size
+                fontSize: widget.screenWidth < 600 ? 14 : 16,
               ),
             ),
             SizedBox(height: 16),

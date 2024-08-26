@@ -12,9 +12,8 @@ class CustomRoadContainer extends StatefulWidget {
 class _CustomRoadContainerState extends State<CustomRoadContainer> {
   @override
   Widget build(BuildContext context) {
-    // Using MediaQuery to get screen width
     var screenWidth = MediaQuery.of(context).size.width;
-    var isSmallScreen = screenWidth < 600; // Define a breakpoint
+    var isSmallScreen = screenWidth < 600;
 
     return Container(
       width: widget.screenSize,
@@ -33,7 +32,6 @@ class _CustomRoadContainerState extends State<CustomRoadContainer> {
       ),
       child: isSmallScreen
           ? Column(
-              // For smaller screens, use a Column layout
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 containerWidget("Destination", "Where to?", Icons.search),
@@ -47,7 +45,6 @@ class _CustomRoadContainerState extends State<CustomRoadContainer> {
               ],
             )
           : Row(
-              // For larger screens, use a Row layout
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -64,7 +61,6 @@ class _CustomRoadContainerState extends State<CustomRoadContainer> {
     );
   }
 
-  // Reusable widget method
   Widget containerWidget(String text1, String text2, IconData icon) {
     return InkWell(
       splashColor: Colors.grey,
@@ -96,7 +92,6 @@ class _CustomRoadContainerState extends State<CustomRoadContainer> {
     );
   }
 
-  // Search button widget
   Widget searchButton() {
     return Center(
       child: Container(
