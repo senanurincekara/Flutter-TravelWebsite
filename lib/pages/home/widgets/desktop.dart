@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:web_project_flutter/constants/constants.dart';
 import 'package:web_project_flutter/helpers/style.dart';
+import 'package:web_project_flutter/widgets/contact_desktop.dart';
 import 'package:web_project_flutter/widgets/customAdsContainer_desktop.dart';
 import 'package:web_project_flutter/widgets/customRoadContainer.dart';
 import 'package:web_project_flutter/widgets/popular_destinations_dekstop.dart';
@@ -211,6 +212,16 @@ class _DesktopScreenState extends State<DesktopScreen>
                     child: PopularDestinationsDesktop(
                       screenSizeWidth: screenSize.width,
                     ),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10.0, bottom: 10),
+                    child: ContactDesktop(),
                   ),
                 )
               ],
